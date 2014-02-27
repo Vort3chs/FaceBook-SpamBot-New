@@ -10,7 +10,7 @@ This is a brand new facebok spambot with GUI support! This makes customization s
 
 Download link to BETA spam bot, everything essential works, including the random number bot. Just no logging yet.:
 
-http://goo.gl/tn2VbC
+http://goo.gl/zrybr2
 
 
 
