@@ -1,3 +1,13 @@
+#cs ----------------------------------------------------------------------------
+
+	AutoIt Version: 3.3.10.2
+	Author:         Vort3chs
+
+	Script Function:
+	Flood a user on facebook with messages!
+
+#ce ----------------------------------------------------------------------------
+
 #include <FileConstants.au3>
 #include <ButtonConstants.au3>
 #include <EditConstants.au3>
@@ -10,10 +20,12 @@
 
 
 Global $folderpath, $nvar, $cuicountdown, $rndvarprog, $radio4, $radio3, $progress1, $slidecheckbox, $readslide, $slider1, $button2, $label14, $rndnumbinput, $min, $max, $rndnumb, $message, $ms, $msgs, $spamnumb, $input1, $input2, $input3, $button1, $input4, $label1, $label2, $label3, $radio1, $radio2, $msgstosend, $spammeduser, $label5, $label6, $label7, $label8, $suicidalscript, $label10, $label11, $label12, $label13, $label14, $label15, $label16
+
 spmgui()
 deflogdir()
 
 Func spmgui()
+	ConsoleWrite('@@ (27) :(' & @MIN & ':' & @SEC & ') spmgui()' & @CR) ;### Function Trace
 	$form1_1_1 = GUICreate("FaceBook Spam-Bot v3.03", 675, 619, 261, 222)
 	$input1 = GUICtrlCreateInput("", 408, 112, 169, 21)
 	$input2 = GUICtrlCreateInput("", 408, 144, 169, 21)
@@ -54,17 +66,17 @@ Func spmgui()
 	$label19 = GUICtrlCreateLabel("Fastest! (60ms)", 592, 472, 75, 17)
 	$progress1 = GUICtrlCreateProgress(144, 8, 353, 25)
 	GUISetState(@SW_SHOW)
-EndFunc
+EndFunc   ;==>spmgui
 
 While 1
 	$msg = GUIGetMsg()
 	If $msg = $gui_event_close Then ExitLoop
 	If $msg = $button1 Then button1()
 	If $msg = $button2 Then about()
-	If $msg = $radio2 AND GUICtrlRead($radio2) = $gui_checked Then
+	If $msg = $radio2 And GUICtrlRead($radio2) = $gui_checked Then
 		GUICtrlSetData($input1, "ONLY FOR CUSTOM BOT!")
 	EndIf
-	If $msg = $radio1 AND GUICtrlRead($radio1) = $gui_checked Then
+	If $msg = $radio1 And GUICtrlRead($radio1) = $gui_checked Then
 		GUICtrlSetData($input1, "")
 	EndIf
 	If $msg = GUICtrlRead($radio4) = $gui_checked Then
@@ -75,6 +87,7 @@ While 1
 WEnd
 
 Func button1()
+	ConsoleWrite('@@ (89) :(' & @MIN & ':' & @SEC & ') button1()' & @CR) ;### Function Trace
 	If GUICtrlRead($radio1) = $gui_checked Then
 		HotKeySet("{UP}", "EmergencyStop")
 		custspam()
@@ -82,23 +95,27 @@ Func button1()
 		HotKeySet("{UP}", "EmergencyStop")
 		rndspam()
 	EndIf
-EndFunc
+EndFunc   ;==>button1
 
 Func deflogdir()
+	ConsoleWrite('@@ (100) :(' & @MIN & ':' & @SEC & ') deflogdir()' & @CR) ;### Function Trace
 	$folderpath = @UserProfileDir & "\Desktop\log.txt"
 	GUICtrlSetData($input2, $folderpath)
-EndFunc
+EndFunc   ;==>deflogdir
 
 Func slideget()
+	ConsoleWrite('@@ (106) :(' & @MIN & ':' & @SEC & ') slideget()' & @CR) ;### Function Trace
 	$readslide = 1000 - GUICtrlRead($slider1) + 60
 	GUICtrlSetData($input3, $readslide)
-EndFunc
+EndFunc   ;==>slideget
 
 Func about()
+	ConsoleWrite('@@ (112) :(' & @MIN & ':' & @SEC & ') about()' & @CR) ;### Function Trace
 	MsgBox($mb_iconinformation, "About the Developer:", "Created by: Austen Lage (Vort3chs)" & @CRLF & @CRLF & "This version was released on 2-28-2014" & @CRLF & @CRLF & "All of the code, the README, updated download links, my other programs, etc. are available here: http://github.com/Vort3chs" & @CRLF & @CRLF & "Thanks for using my program! :)")
-EndFunc
+EndFunc   ;==>about
 
 Func emergencystop()
+	ConsoleWrite('@@ (117) :(' & @MIN & ':' & @SEC & ') emergencystop()' & @CR) ;### Function Trace
 	Opt("SendKeyDelay", 0)
 	Opt("SendKeyDownDelay", 0)
 	Sleep(50)
@@ -107,9 +124,10 @@ Func emergencystop()
 	Sleep(30)
 	Run("FaceBookSpamBotv3.03.exe", "", "")
 	Exit
-EndFunc
+EndFunc   ;==>emergencystop
 
 Func custspam()
+	ConsoleWrite('@@ (129) :(' & @MIN & ':' & @SEC & ') custspam()' & @CR) ;### Function Trace
 	GUICtrlSetData($progress1, 10)
 	$rndvarprog = False
 	$spmdusr = GUICtrlRead($spammeduser)
@@ -176,9 +194,10 @@ Func custspam()
 	GUISetState(@SW_SHOW)
 	Sleep(2000)
 	GUICtrlSetData($progress1, 0)
-EndFunc
+EndFunc   ;==>custspam
 
 Func rndspam()
+	ConsoleWrite('@@ (199) :(' & @MIN & ':' & @SEC & ') rndspam()' & @CR) ;### Function Trace
 	GUICtrlSetData($progress1, 10)
 	$spmdusr = GUICtrlRead($spammeduser)
 	$ms = GUICtrlRead($input3)
@@ -248,9 +267,10 @@ Func rndspam()
 	GUISetState(@SW_SHOW)
 	Sleep(2000)
 	GUICtrlSetData($progress1, 0)
-EndFunc
+EndFunc   ;==>rndspam
 
 Func spamlog()
+	ConsoleWrite('@@ (272) :(' & @MIN & ':' & @SEC & ') spamlog()' & @CR) ;### Function Trace
 	$spmdusr = GUICtrlRead($spammeduser)
 	$message = GUICtrlRead($input1)
 	$ms = GUICtrlRead($input3)
@@ -259,9 +279,10 @@ Func spamlog()
 	Local Const $filepath = $iinfo
 	Local $fileopen = FileOpen($filepath, $fo_append)
 	FileWriteLine($fileopen, "You spammed " & $spmdusr & " with " & $msgs & " messages, " & "there were " & $ms & " milliseconds between each message. The message was:" & $message & @CRLF & @CRLF)
-EndFunc
+EndFunc   ;==>spamlog
 
 Func rndspamlog()
+	ConsoleWrite('@@ (284) :(' & @MIN & ':' & @SEC & ') rndspamlog()' & @CR) ;### Function Trace
 	$spmdusr = GUICtrlRead($spammeduser)
 	$ms = GUICtrlRead($input3)
 	$msgs = GUICtrlRead($input4)
@@ -269,5 +290,4 @@ Func rndspamlog()
 	Local Const $filepath = $iinfo
 	Local $fileopen = FileOpen($filepath, $fo_append)
 	FileWriteLine($fileopen, "You spammed " & $spmdusr & " with " & $msgs & " messages, " & "there were " & $ms & " milliseconds between each message. The messages sent were randomly generated strings of numbers, consisting of 15 characters each." & @CRLF & @CRLF)
-EndFunc
-
+EndFunc   ;==>rndspamlog
