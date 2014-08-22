@@ -5,5 +5,12 @@ This is a brand new facebok spambot with GUI support! This makes customization s
 
 A link will be provided for the compiled download soon, major updates to come.
 
+---Planned Features--
 
+- Sequence of messages
+- Random messages
+- Random letter spam
+- Random special character spam
+- Random alphanumeric spam
+- All of the above combined? (Maybe)
 
