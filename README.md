@@ -13,4 +13,6 @@ A link will be provided for the compiled download soon, major updates to come.
 - Random special character spam
 - Random alphanumeric spam
 - All of the above combined? (Maybe)
+- Auto update checker & downloader!
+- Maybe more!
 
