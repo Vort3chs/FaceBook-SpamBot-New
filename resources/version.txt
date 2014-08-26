@@ -1,4 +1,4 @@
-versionlatest-actual=[3.06]
+versionlatest-actual=[3.07]
         ismajor=[0]
 versionlatest-recommended=[3.03]
         ismajor=[0]
