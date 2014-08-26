@@ -16,3 +16,6 @@ A link will be provided for the compiled download soon, major updates to come.
 - Auto update checker & downloader!
 - Maybe more!
 
+==========
+THE MAIN FOCUS OF THIS BOT IS TO TEST SPAM PREVENTION MEASURES ON WEBSERVERS OR OTHER PROGRAMS!
+==========
