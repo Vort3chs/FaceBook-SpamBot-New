@@ -1,0 +1,12 @@
+versionlatest-actual=[3.06]
+        ismajor=[0]
+versionlatest-recommended=[3.03]
+        ismajor=[0]
+
+
+#Version file to check against
+#Boolean values ONLY for ismajor!
+#ismajor defines whether or not the update is considered a MAJOR update or not.
+#This is my format, it's completely made up to fit my needs!
+#versionlatest-actual shows the VERY lateset version of the bot, including dev builds (could be very very broken or unstable)
+#versionlatest-recommended shows the latest STABLE version of the spambot that has been tested and is considered STABLE.
