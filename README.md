@@ -14,8 +14,9 @@ A link will be provided for the compiled download soon, major updates to come.
 - Random alphanumeric spam
 - All of the above combined? (Maybe)
 - Auto update checker & downloader!
+- Save spam presets, for later use!
 - Maybe more!
 
 ==========
-THE MAIN FOCUS OF THIS BOT IS TO TEST SPAM PREVENTION MEASURES ON WEBSERVERS OR OTHER PROGRAMS!
+THE MAIN FOCUS OF THIS BOT IS TO TEST SPAM PREVENTION MEASURES ON WEBSERVERS OR OTHER PROGRAMS! THIS WAS NOT CREATED WITH MALICIOUS INTENT!
 ==========
