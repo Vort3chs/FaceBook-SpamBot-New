@@ -306,7 +306,6 @@ Func rndspamLog()
 EndFunc   ;==>rndspamLog
 
 Func updateCheck()
-	MsgBox(0,"",@TempDir)
 	Local $ScriptVersion = "3.06"
 	ConsoleWrite('@@ (309) :(' & @MIN & ':' & @SEC & ') updateCheck()' & @CR) ;### Function Trace
 	Local $sFilePath = @TempDir & "\version.txt"
