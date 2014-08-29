@@ -23,7 +23,7 @@
 #include <String.au3>
 
 
-Global $LatestVersionDev, $aVersionActual, $aCurVersion, $isMajor, $updateStat, $ScriptVersion, $folderpath, $nvar, $cuicountdown, $rndvarprog, $radio4, $radio3, $progress1, $slidecheckbox, $readslide, $slider1, $button2, $label14, $rndnumbinput, $min, $max, $rndnumb, $message, $ms, $msgs, $spamnumb, $input1, $input2, $input3, $button1, $input4, $label1, $label2, $label3, $radio1, $radio2, $msgstosend, $spammeduser, $label5, $label6, $label7, $label8, $suicidalscript, $label10, $label11, $label12, $label13, $label14, $label15, $label16
+Global $LatestVersionDev, $aVersionActual, $aCurVersion, $isMajor, $updateStat, $folderpath, $nvar, $cuicountdown, $rndvarprog, $radio4, $radio3, $progress1, $slidecheckbox, $readslide, $slider1, $button2, $label14, $rndnumbinput, $min, $max, $rndnumb, $message, $ms, $msgs, $spamnumb, $input1, $input2, $input3, $button1, $input4, $label1, $label2, $label3, $radio1, $radio2, $msgstosend, $spammeduser, $label5, $label6, $label7, $label8, $suicidalscript, $label10, $label11, $label12, $label13, $label14, $label15, $label16
 
 spmGui()
 defLogDir()
@@ -306,17 +306,21 @@ Func rndspamLog()
 EndFunc   ;==>rndspamLog
 
 Func updateCheck()
+	MsgBox(0,"",@TempDir)
+	Local $ScriptVersion = "3.06"
 	ConsoleWrite('@@ (309) :(' & @MIN & ':' & @SEC & ') updateCheck()' & @CR) ;### Function Trace
-	Local $sFilePath = @TempDir & "\botversion.txt"
-	Local $hDownload = InetGet("https://raw.githubusercontent.com/Vort3chs/FaceBook-SpamBot-New/master/resources/version.txt", @TempDir & "\botversion.txt", $INET_FORCERELOAD, $INET_DOWNLOADBACKGROUND)
+	Local $sFilePath = @TempDir & "\version.txt"
+	Local $hDownload = InetGet("https://docs.google.com/document/d/1ikeMen05edev-XzdbyvlFzu0jXmDWHmIsclaYW3NhRQ/export?format=txt", @TempDir & "\version.txt", $INET_FORCERELOAD, $INET_DOWNLOADBACKGROUND)
 	InetClose($hDownload)
 	_FileReadToArray($sFilePath, $aCurVersion)
 	Local $aVersionActual = _StringBetween($aCurVersion[1], "[", "]")
-	MsgBox(0, "", $aVersionActual[0])
-	If $aVersionActual[0] >= $ScriptVersion Then
+	MsgBox(0, "", $aVersionActual[0] & "SCRIPT VERSION: " & $ScriptVersion)
+	If $aVersionActual[0] <> $ScriptVersion Then
 		$update = 1
+		MsgBox(0,"","UPDATE AVAILABLE!")
 	Else
 		$update = 0
+		MsgBox(0,"","NO UPDATE AVAILABLE!")
 	EndIf
 	;;INCOMPLETE!
 EndFunc   ;==>updateCheck
