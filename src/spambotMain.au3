@@ -342,5 +342,5 @@ Func updateCheck()
 EndFunc   ;==>updateCheck
 
 Func executeUpdate()
-	MsgBox(0,"","$class.vort3chs.main.Update")
+	MsgBox(0,"","--testupdaterbox")
 EndFunc
