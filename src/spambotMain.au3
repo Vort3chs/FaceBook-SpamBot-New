@@ -23,7 +23,7 @@
 #include <String.au3>
 
 
-Global $LatestVersionDev, $aVersionActual, $aCurVersion, $isMajor, $updateStat, $folderpath, $nvar, $cuicountdown, $rndvarprog, $radio4, $radio3, $progress1, $slidecheckbox, $readslide, $slider1, $button2, $label14, $rndnumbinput, $min, $max, $rndnumb, $message, $ms, $msgs, $spamnumb, $input1, $input2, $input3, $button1, $input4, $label1, $label2, $label3, $radio1, $radio2, $msgstosend, $spammeduser, $label5, $label6, $label7, $label8, $suicidalscript, $label10, $label11, $label12, $label13, $label14, $label15, $label16
+Global $optUpdate, $aIsMajor, $LatestVersionDev, $aVersionActual, $aCurVersion, $isMajor, $updateStat, $folderpath, $nvar, $cuicountdown, $rndvarprog, $radio4, $radio3, $progress1, $slidecheckbox, $readslide, $slider1, $button2, $label14, $rndnumbinput, $min, $max, $rndnumb, $message, $ms, $msgs, $spamnumb, $input1, $input2, $input3, $button1, $input4, $label1, $label2, $label3, $radio1, $radio2, $msgstosend, $spammeduser, $label5, $label6, $label7, $label8, $suicidalscript, $label10, $label11, $label12, $label13, $label14, $label15, $label16
 
 spmGui()
 defLogDir()
@@ -316,10 +316,31 @@ Func updateCheck()
 	MsgBox(0, "", $aVersionActual[0] & "SCRIPT VERSION: " & $ScriptVersion)
 	If $aVersionActual[0] <> $ScriptVersion Then
 		$update = 1
-		MsgBox(0,"","UPDATE AVAILABLE!")
+		$aIsMajor = _StringBetween($aCurVersion[2], "[", "]")
+		If $aIsMajor[0] = 1 Then
+			$isMajor = 1
+		EndIf
+		If $update And $isMajor = 1 Then
+			MsgBox(0, "Update Available!", "A new version of the spambot is available!" & @CRLF & _
+					"New Version: " & $aVersionActual[0] & @CRLF & _
+					"This is a major update!")
+			$optUpdate = MsgBox(3, "Update Available!", "Would you like to automagically install this update?")
+			If $optUpdate = 6 Then
+				executeUpdate()
+			Else
+				Return
+			EndIf
+		Else
+			MsgBox(0, "Update Available!", "A new version of the spambot is available!" & @CRLF & _
+					"New Version: " & $aVersionActual[0])
+		EndIf
 	Else
 		$update = 0
-		MsgBox(0,"","NO UPDATE AVAILABLE!")
+		MsgBox(0, "", "NO UPDATE AVAILABLE!")
 	EndIf
 	;;INCOMPLETE!
 EndFunc   ;==>updateCheck
+
+Func executeUpdate()
+	MsgBox(0,"","$class.vort3chs.main.Update")
+EndFunc
