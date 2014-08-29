@@ -332,7 +332,8 @@ Func updateCheck()
 			EndIf
 		Else
 			MsgBox(0, "Update Available!", "A new version of the spambot is available!" & @CRLF & _
-					"New Version: " & $aVersionActual[0])
+					"New Version: " & $aVersionActual[0] & @CRLF & _
+					"This is a minor update!")
 		EndIf
 	Else
 		$update = 0
