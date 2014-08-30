@@ -30,7 +30,7 @@ spmGui()
 defLogDir()
 updateCheck()
 
-$ScriptVersion = "3.06"
+$ScriptVersion = "3.07"
 
 Func spmGui()
 	ConsoleWrite('@@ (34) :(' & @MIN & ':' & @SEC & ') spmGui()' & @CR) ;### Function Trace
@@ -351,8 +351,10 @@ EndFunc   ;==>updateCheck
 
 Func executeUpdate()
 	MsgBox(0, "Downloading", "The update is currently being downloaded and installed in the current directory!")
-	Local $aUpdateURL = _StringBetween($aCurVersion[4],"[","]")
-	Local $hUpdateDownload = InetGet($aUpdateURL, @TempDir & "\FaceBookSpamBot.exe")
+	_ArrayDisplay($aCurVersion)
+	Local $aUpdateURL = _StringBetween($aCurVersion[3],"[","]")
+	_ArrayDisplay($aUpdateURL)
+	Local $hUpdateDownload = InetGet($aUpdateURL[0], @TempDir & "\FaceBookSpamBot.exe")
 	InetClose($hUpdateDownload)
 	MsgBox(0,"Complete!","The new version has been downloaded, the script will restart to complete the update!")
 	Run("updaterMain.exe")
