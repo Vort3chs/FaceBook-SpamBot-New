@@ -1,1 +1,44 @@
 ;;Test Spambot output file!
+
+Preparing FaceBook Spam-Bot v3.03.....
+Hello, Test, after exactly 30 seconds you you will receive 33 messages, each separated from the other by 60ms.
+15 seconds remaining...
+
+Begin!
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+CustomTextTest
+Your name is Test.
+I, the script, have logged you as a test subject. Thank you for your involuntary participation!
+Spamming complete.
+Want to keep up on the development of this project? Check out my GitHub... https://github.com/Vort3chs/ - Austen Lage
