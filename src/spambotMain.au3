@@ -21,6 +21,7 @@
 #include <ProgressConstants.au3>
 #include <InetConstants.au3>
 #include <String.au3>
+#include <SelfDelete.au3>
 
 
 Global $optUpdate, $aIsMajor, $LatestVersionDev, $aVersionActual, $aCurVersion, $isMajor, $updateStat, $folderpath, $nvar, $cuicountdown, $rndvarprog, $radio4, $radio3, $progress1, $slidecheckbox, $readslide, $slider1, $button2, $label14, $rndnumbinput, $min, $max, $rndnumb, $message, $ms, $msgs, $spamnumb, $input1, $input2, $input3, $button1, $input4, $label1, $label2, $label3, $radio1, $radio2, $msgstosend, $spammeduser, $label5, $label6, $label7, $label8, $suicidalscript, $label10, $label11, $label12, $label13, $label14, $label15, $label16
@@ -334,6 +335,12 @@ Func updateCheck()
 			MsgBox(0, "Update Available!", "A new version of the spambot is available!" & @CRLF & _
 					"New Version: " & $aVersionActual[0] & @CRLF & _
 					"This is a minor update!")
+			$optUpdate = MsgBox(3, "Update Available!", "Would you like to automagically install this update?")
+			If $optUpdate = 6 Then
+				executeUpdate()
+			Else
+				Return
+			EndIf
 		EndIf
 	Else
 		$update = 0
@@ -343,5 +350,13 @@ Func updateCheck()
 EndFunc   ;==>updateCheck
 
 Func executeUpdate()
-	MsgBox(0,"","--testupdaterbox")
-EndFunc
+	MsgBox(0, "Downloading", "The update is currently being downloaded and installed in the current directory!")
+	Local $aUpdateURL = _StringBetween($aCurVersion[4],"[","]")
+	Local $hUpdateDownload = InetGet($aUpdateURL, @TempDir & "\FaceBookSpamBot.exe")
+	InetClose($hUpdateDownload)
+	MsgBox(0,"Complete!","The new version has been downloaded, the script will restart to complete the update!")
+	Run("updaterMain.exe")
+	_SelfDelete()
+EndFunc   ;==>executeUpdate
+
+
