@@ -27,8 +27,6 @@
 Global $optUpdate, $aIsMajor, $LatestVersionDev, $aVersionActual, $aCurVersion, $isMajor, $updateStat, $folderpath, $nvar, $cuicountdown, $rndvarprog, $radio4, $radio3, $progress1, $slidecheckbox, $readslide, $slider1, $button2, $label14, $rndnumbinput, $min, $max, $rndnumb, $message, $ms, $msgs, $spamnumb, $input1, $input2, $input3, $button1, $input4, $label1, $label2, $label3, $radio1, $radio2, $msgstosend, $spammeduser, $label5, $label6, $label7, $label8, $suicidalscript, $label10, $label11, $label12, $label13, $label14, $label15, $label16
 
 spmGui()
-defLogDir()
-updateCheck()
 
 $ScriptVersion = "3.07"
 
@@ -82,27 +80,29 @@ Func spmGui()
 	GUISetState(@SW_SHOW)
 	#EndRegion ### END Koda GUI section ###
 	GUISetState(@SW_SHOW)
+
+	defLogDir()
+    updateCheck()
+
+	While 1
+		$msg = GUIGetMsg()
+		If $msg = $gui_event_close Then ExitLoop
+		If $msg = $button1 Then button1()
+		If $msg = $button2 Then about()
+		If $msg = $radio2 And GUICtrlRead($radio2) = $gui_checked Then
+			GUICtrlSetState($input3, $GUI_DISABLE)
+		EndIf
+		If $msg = $radio1 And GUICtrlRead($radio1) = $gui_checked Then
+			GUICtrlSetData($input1, "")
+			GUICtrlSetState($input3, $GUI_ENABLE)
+		EndIf
+		If $msg = GUICtrlRead($radio4) = $gui_checked Then
+			$readslide = 1000 - GUICtrlRead($slider1) + 60
+			GUICtrlSetData($input3, $readslide)
+		EndIf
+		slideGet()
+	WEnd
 EndFunc   ;==>spmGui
-
-defLogDir()
-
-While 1
-	$msg = GUIGetMsg()
-	If $msg = $gui_event_close Then ExitLoop
-	If $msg = $button1 Then button1()
-	If $msg = $button2 Then about()
-	If $msg = $radio2 And GUICtrlRead($radio2) = $gui_checked Then
-		GUICtrlSetData($input1, "CUSTOM BOT ONLY!")
-	EndIf
-	If $msg = $radio1 And GUICtrlRead($radio1) = $gui_checked Then
-		GUICtrlSetData($input1, "")
-	EndIf
-	If $msg = GUICtrlRead($radio4) = $gui_checked Then
-		$readslide = 1000 - GUICtrlRead($slider1) + 60
-		GUICtrlSetData($input3, $readslide)
-	EndIf
-	slideGet()
-WEnd
 
 Func button1()
 	ConsoleWrite('@@ (106) :(' & @MIN & ':' & @SEC & ') button1()' & @CR) ;### Function Trace
@@ -351,10 +351,10 @@ EndFunc   ;==>updateCheck
 
 Func executeUpdate()
 	Local $aUpdateURL = _StringBetween($aCurVersion[3], "[", "]")
-	Local $hUpdateDownload = InetGet($aUpdateURL[0], @TempDir & "\FaceBookSpamBot.exe", $INET_DOWNLOADBACKGROUND)
-	MsgBox(0, "Downloading", "The update is currently being downloaded!")
+	Local $hUpdateDownload = InetGet($aUpdateURL[0], @TempDir & "\FaceBookSpamBot.exe")
 	InetClose($hUpdateDownload)
-	MsgBox(0, "Complete!", "The new version has been downloaded, the script will restart to complete the update!")
+	MsgBox(0, "Complete!", "The new version has been downloaded, the script will restart to complete the update!" & @CRLF & _
+	"The new executable is located at: " & @DesktopDir)
 	Run("updaterMain.exe")
 	_SelfDelete()
 EndFunc   ;==>executeUpdate
